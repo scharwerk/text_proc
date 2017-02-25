@@ -7,7 +7,7 @@ describe TextProcessing do
               шового капіталу, як пізніше виявиться'
       text_without_breacks = '...обставин і подання позичкового гро
                               шового капіталу, як пізніше виявиться'
-      expect(TextProcessing::line_break_remove(text)).to eq text 
+      expect(TextProcessing.line_break_remove(text)).to eq text 
     end  
   end
 end

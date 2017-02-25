@@ -1,8 +1,7 @@
-module TextProcessing
+class TextProcessing
 
-  def line_break_remove(text)
-
+  def self.line_break_remove(text)
+    
   end
-  module_function :line_break_remove
 
 end
