@@ -16,19 +16,30 @@ describe TextProcessing do
       end
     end
 
-    context 'with a multiline text' do
-      it 'concatenate word with line breack' do
-        text =
-          'капіталу ще немає мови) меншає, і тому капіталу, призначеного для позик,
-             стає порівняно багато. Але серед таких обставин і подання позичкового гро-
-             шового капіталу, як пізніше виявиться, позитивно зростає.'
-          text_without_breacks =
-          'капіталу ще немає мови) меншає, і тому капіталу, призначеного для позик,
-             стає порівняно багато. Але серед таких обставин і подання позичкового грошового
-             капіталу, як пізніше виявиться, позитивно зростає.'
+    # context 'with a multiline text' do
+    #   it 'concatenate word with line breack' do
+    #     text =
+    #       'капіталу ще немає мови) меншає, і тому капіталу, призначеного для позик,
+    #          стає порівняно багато. Але серед таких обставин і подання позичкового гро-
+    #          шового капіталу, як пізніше виявиться, позитивно зростає.'
+    #       text_without_breacks =
+    #       'капіталу ще немає мови) меншає, і тому капіталу, призначеного для позик,
+    #          стає порівняно багато. Але серед таких обставин і подання позичкового грошового
+    #          капіталу, як пізніше виявиться, позитивно зростає.'
 
-          expect(TextProcessing.line_break_remove(text)).to eq text_without_breacks 
-          end
+    #       expect(TextProcessing.line_break_remove(text)).to eq text_without_breacks 
+    #       end
+    # end
+  end
+
+  describe '.ends_with_hyphen?' do
+    it 'return true if ends with hyphen' do
+      text = 'багато. Але серед таких обставин і подання позичкового гро-'
+      expect(TextProcessing.ends_with_hyphen?(text)).to be true
+    end
+    it 'return false if ends with hyphen' do
+      text = 'і тому капіталу, призначеного для позик,'
+      expect(TextProcessing.ends_with_hyphen?(text)).to be false
     end
   end
 
