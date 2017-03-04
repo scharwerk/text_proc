@@ -43,4 +43,21 @@ describe TextProcessing do
     end
   end
 
+  describe '.remove_last_word' do
+    it 'return string without last word' do
+      text = 'багато. Але серед таких обставин і подання позичкового гро-'
+      cuted_text = 'багато. Але серед таких обставин і подання позичкового'
+      expect(TextProcessing.remove_last_word(text)).to eq cuted_text
+    end
+  end
+
+  
+  describe '.remove_last_word' do
+    it 'return string without last word' do
+      text = 'багато. Але серед таких обставин і подання позичкового гро-'
+      cuted_text = 'Але серед таких обставин і подання позичкового гро-'
+      expect(TextProcessing.remove_first_word(text)).to eq cuted_text
+    end
+  end
+
 end
