@@ -74,4 +74,18 @@ describe TextProcessing do
     end
   end
 
+  describe '.remove_trailing_whitespace' do
+    it 'remove space in an end of a line' do
+       text1 =  'Навпаки,
+єдино правильний метод той, щоб на доходи кожного року покладати 
+зневартнення, неминуче зв’язане з тим, щоб заслужити ці доходи, все
+одно, чи витрачено дану суму, чи ні“ (Captain'
+       text2 =  'Навпаки,
+єдино правильний метод той, щоб на доходи кожного року покладати
+зневартнення, неминуче зв’язане з тим, щоб заслужити ці доходи, все
+одно, чи витрачено дану суму, чи ні“ (Captain'
+       expect(TextProcessing.remove_trailing_whitespace(text1)).to eq text2
+    end
+  end
+
 end

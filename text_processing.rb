@@ -18,7 +18,10 @@ class TextProcessing
   
   def self.change_quotes(text)
     text.gsub(/[„“]/, '„' => '«', '“' => '»')
-    #'hello'.gsub(/[eo]/, 'e' => 3, 'o' => '*') 
+  end
+
+  def self.remove_trailing_whitespace(text)
+    # text.gsub(/ \n/, '\n')
   end
 
 # try to delete in couple with a line end symbol
