@@ -24,5 +24,7 @@ class TextProcessing
     text.gsub(/ $/, '').gsub(/^ /, '').squeeze(' ')
   end
 
+  #look p.51 book II for Replace CAPS WORDS with normal case
+
 # try to delete in couple with a line end symbol
 end
