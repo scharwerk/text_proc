@@ -21,7 +21,7 @@ class TextProcessing
   end
 
   def self.remove_trailing_whitespace(text)
-    # text.gsub(/ \n/, '\n')
+    text.gsub(/ $/, '').gsub(/^ /, '')
   end
 
 # try to delete in couple with a line end symbol
