@@ -108,8 +108,26 @@ describe TextProcessing do
 одно, чи витрачено дану суму, чи ні“ (Captain'
        expect(TextProcessing.remove_trailing_whitespace(text1)).to eq text2
     end
-
-
   end
+
+  describe '.lowercase_headings' do
+    it 'replace all laters to lowercase except first' do 
+      text1 = 'економія розглядає процес кругобігу промислового капіталу.
+
+РОЗДІЛ ТРЕТІЙ
+
+КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ
+
+Загальна формула для кругобігу товарового капіталу така:'
+      text2 = 'економія розглядає процес кругобігу промислового капіталу.
+
+Розділ третій
+
+Кругобіг товарового капіталу
+
+Загальна формула для кругобігу товарового капіталу така:'
+      expect(TextProcessing.lowercase_headings(text1)).to eq text2
+    end
+  end 
 
 end
