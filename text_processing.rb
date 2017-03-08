@@ -25,7 +25,9 @@ class TextProcessing
   end
 
   def self.lowercase_headings(text)
-    
+    text.capitalize
+    #case methods works only with English
+    #case conversion is effective only in ASCII region.
   end
 # try to delete in couple with a line end symbol
 end
