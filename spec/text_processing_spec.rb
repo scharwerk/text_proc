@@ -118,4 +118,13 @@ describe TextProcessing do
     end
   end 
 
+  describe '.uppercase_line?' do 
+    context 'a line with all uppercase laters' do
+        it 'return true' do
+          text = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
+          expect(TextProcessing.uppercase_line?(text)).to be true
+        end
+    end
+  end
+
 end
