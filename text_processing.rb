@@ -26,6 +26,7 @@ class TextProcessing
 
   def self.lowercase_headings(text)
     text.capitalize
+    #good news it will work for ruby 2.4.0
     #case methods works only with English
     #case conversion is effective only in ASCII region.
   end

@@ -112,8 +112,8 @@ describe TextProcessing do
 
   describe '.lowercase_headings' do
     it 'replace all laters to lowercase except first' do 
-      text1 = 'ПРИВІТ'
-      text2 = 'Привіт'
+      text1 = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
+      text2 = 'Кругобіг товарового капіталу'
       expect(TextProcessing.lowercase_headings(text1)).to eq text2
     end
   end 
