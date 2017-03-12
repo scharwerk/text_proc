@@ -30,5 +30,10 @@ class TextProcessing
     #case methods works only with English
     #case conversion is effective only in ASCII region.
   end
+
+  def self.uppercase_line?(line)
+    line.match?(/\p{Upper}/) and !line.match?(/\p{Lower}/)
+    #if we met any Lowercase char
+  end
 # try to delete in couple with a line end symbol
 end

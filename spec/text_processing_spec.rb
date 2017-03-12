@@ -121,9 +121,15 @@ describe TextProcessing do
   describe '.uppercase_line?' do 
     context 'a line with all uppercase laters' do
         it 'return true' do
-          text = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
-          expect(TextProcessing.uppercase_line?(text)).to be true
+          line = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
+          expect(TextProcessing.uppercase_line?(line)).to be true
         end
+    end
+    context 'a ordinary line' do
+      it 'return false' do
+        line = "циркуляції є Г — Т... Т'—Г' — Г — Т — Г. При"
+        expect(TextProcessing.uppercase_line?(line)).to be false
+      end
     end
   end
 
