@@ -131,6 +131,10 @@ describe TextProcessing do
         expect(TextProcessing.uppercase_line?(line)).to be false
       end
     end
+    context 'with a only formula on line' do
+      line = 'Т— Г —Т'
+    end  
+    end
   end
 
 end
