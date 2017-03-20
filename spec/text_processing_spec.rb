@@ -80,7 +80,27 @@ describe TextProcessing do
       end
     end
     context 'with a only formula on line' do
-      # line = 'Т— Г —Т' # /Р
+      it 'return false, the formula contains dashes' do
+        line = 'Т— Г —Т' 
+        textProc = TextProcessing.new(line)
+        expect(textProc.uppercase_line?(line)).to be false
+      end
+      it 'return false, the formula contains dots' do
+        line = "Т...Т'"
+        textProc = TextProcessing.new(line)
+        expect(textProc.uppercase_line?(line)).to be false
+      end
+      it 'return false, the formula contains slash' do
+        line = '/Р'
+        textProc = TextProcessing.new(line)
+        expect(textProc.uppercase_line?(line)).to be false
+      end
+      it 'return false, the formula contains backslash' do
+        line = '\Р'
+        textProc = TextProcessing.new(line)
+        expect(textProc.uppercase_line?(line)).to be false
+      end
+
     end
   end
 
