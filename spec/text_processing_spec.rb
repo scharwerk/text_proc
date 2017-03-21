@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TextProcessing do
-  describe '.change_quotes' do
+  describe '#change_quotes' do
     it 'return text with «...» instead „...“' do
       text1 =  ' с., р. 40). „Навпаки,
 єдино правильний метод той, щоб на доходи кожного року покладати
@@ -16,7 +16,7 @@ describe TextProcessing do
     end
   end
 
-  describe '.remove_trailing_whitespace' do
+  describe '#remove_trailing_whitespace' do
     it 'remove space in an end of a line' do
       text1 =  'Навпаки,
 єдино правильний метод той, щоб на доходи кожного року покладати 
@@ -55,16 +55,16 @@ describe TextProcessing do
     end
   end
   
-  describe '.lowercase_headings' do
-    it 'replace all laters to lowercase except first' do
+  describe '#capitalize_line' do
+    it 'replace all laters to capitalize except first' do
       line1 = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
       line2 = 'Кругобіг товарового капіталу'
       textProc = TextProcessing.new(line1)
-      expect(textProc.lowercase_headings(line1)).to eq line2
+      expect(textProc.capitalize_line(line1)).to eq line2
     end
   end
 
-  describe '.uppercase_line?' do
+  describe '#uppercase_line?' do
     context 'a line with all uppercase laters' do
       it 'return true' do
         line = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
@@ -100,7 +100,30 @@ describe TextProcessing do
         textProc = TextProcessing.new(line)
         expect(textProc.uppercase_line?(line)).to be false
       end
+    end
+  end
+  describe '#capitalize_heading' do
+    context 'a text with heading' do
+      it 'return text with capitalize heading' do
+        text1 = 'капіталу є та форма, що в ній класична
+економія розглядає процес кругобігу промислового капіталу.
 
+РОЗДІЛ ТРЕТІЙ
+
+КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ
+
+Загальна формула для кругобігу товарового капіталу така:'
+        text2 = 'капіталу є та форма, що в ній класична
+економія розглядає процес кругобігу промислового капіталу.
+
+Розділ третій
+
+Кругобіг товарового капіталу
+
+Загальна формула для кругобігу товарового капіталу така:'
+        textProc = TextProcessing.new(text1)
+        expect(textProc.lowercase_heading(text1)).to eq text2
+      end
     end
   end
 

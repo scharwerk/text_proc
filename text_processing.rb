@@ -28,7 +28,7 @@ class TextProcessing
     @text.gsub(/ $/, '').gsub(/^ /, '').squeeze(' ')
   end
 
-  def lowercase_headings(line)
+  def capitalize_line(line)
     line.capitalize
     # good news it will work for ruby 2.4.0
     # case methods works only with English
@@ -37,7 +37,10 @@ class TextProcessing
 
   def uppercase_line?(line)
     line.match?(/\p{Upper}/) && !line.match?(/[\p{Lower}—.\/\\]/)
-    # if we met any Lowercase char
+  end
+
+  def capitalize_heading(text)
+    
   end
   # try to delete in couple with a line end symbol
 end
