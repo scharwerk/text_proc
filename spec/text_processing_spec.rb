@@ -102,29 +102,46 @@ describe TextProcessing do
       end
     end
   end
-  describe '#capitalize_heading' do
-    context 'a text with heading' do
-      it 'return text with capitalize heading' do
-        text1 = 'капіталу є та форма, що в ній класична
-економія розглядає процес кругобігу промислового капіталу.
 
-РОЗДІЛ ТРЕТІЙ
-
-КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ
-
-Загальна формула для кругобігу товарового капіталу така:'
-        text2 = 'капіталу є та форма, що в ній класична
-економія розглядає процес кругобігу промислового капіталу.
-
-Розділ третій
-
-Кругобіг товарового капіталу
-
-Загальна формула для кругобігу товарового капіталу така:'
+  describe '#remove_line_breaks' do
+    context 'with a multiply text' do
+      it 'concatenate word with hyphen' do
+        text1 = "The wolverine is now es-
+sentially absent from
+the southern end
+of its European range."
+        text2 = "The wolverine is now essentially 
+absent from
+the southern end
+of its European range."
         textProc = TextProcessing.new(text1)
-        expect(textProc.lowercase_heading(text1)).to eq text2
+        expect(textProc.remove_line_breaks).to eq text2
       end
     end
   end
+#   describe '#capitalize_heading' do
+#     context 'a text with heading' do
+#       it 'return text with capitalize heading' do
+#         text1 = 'капіталу є та форма, що в ній класична
+# економія розглядає процес кругобігу промислового капіталу.
+
+# РОЗДІЛ ТРЕТІЙ
+
+# КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ
+
+# Загальна формула для кругобігу товарового капіталу така:'
+#         text2 = 'капіталу є та форма, що в ній класична
+# економія розглядає процес кругобігу промислового капіталу.
+
+# Розділ третій
+
+# Кругобіг товарового капіталу
+
+# Загальна формула для кругобігу товарового капіталу така:'
+#         textProc = TextProcessing.new(text1)
+#         expect(textProc.lowercase_heading(text1)).to eq text2
+#       end
+#     end
+#   end
 
 end

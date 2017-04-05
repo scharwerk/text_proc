@@ -38,9 +38,17 @@ class TextProcessing
   def uppercase_line?(line)
     line.match?(/\p{Upper}/) && !line.match?(/[\p{Lower}—.\/\\]/)
   end
-
-  def capitalize_heading(text)
-    
+  
+  def remove_line_breaks
+    # @text.gsub(/-\n([^\s]*)\s/,$1+"\n")
+    @text.gsub(/(-\n)(\S+)\s/) { "#{$2} \n"}    
   end
+
+
+  # def capitalize_heading(text)
+  #   text.each line do |line|
+  #     if self.upercase_line?(line) line.capitalize : line
+  #   end
+  # end
   # try to delete in couple with a line end symbol
 end
