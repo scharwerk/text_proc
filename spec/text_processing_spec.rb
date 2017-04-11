@@ -106,14 +106,13 @@ describe TextProcessing do
   describe '#remove_line_breaks' do
     context 'with a multiply text' do
       it 'concatenate word with hyphen' do
-        text1 = "The wolverine is now es-
-sentially absent from
-the southern end
-of its European range."
-        text2 = "The wolverine is now essentially 
-absent from
-the southern end
-of its European range."
+        text1 = "капітал
+фігурує лише як товар; але коли мова йде про складові частини варто-
+сти, то"
+        text2 = "капітал
+фігурує лише як товар; але коли мова йде про складові частини вартости,
+то"
+#now it add additional whitespace in the begining of line
         textProc = TextProcessing.new(text1)
         expect(textProc.remove_line_breaks).to eq text2
       end

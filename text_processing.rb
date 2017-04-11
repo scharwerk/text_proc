@@ -40,8 +40,7 @@ class TextProcessing
   end
   
   def remove_line_breaks
-    # @text.gsub(/-\n([^\s]*)\s/,$1+"\n")
-    @text.gsub(/(-\n)(\S+)\s/) { "#{$2} \n"}    
+    @text.gsub(/(-\n)(\S+)\s/) { "#{$2}\n"}  
   end
 
 
