@@ -40,7 +40,11 @@ class TextProcessing
   end
   
   def remove_line_breaks
-    @text.gsub(/(-\n)(\S+)\s/) { "#{$2}\n"}  
+    @text.gsub(/(-\n)(\S+)\s/) { "#{$2}\n"}
+    # In plain English, we looking for a pattern (/(-\n)(\S+)\s/),
+    # that represent, hyphen then end of a line, then any charcter except
+    # whitespace, then whitespace and replace with second group of pattern
+    # $2 means (\S+), then end of a line \n
   end
 
 
