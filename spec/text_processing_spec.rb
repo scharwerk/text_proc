@@ -1,3 +1,4 @@
+# Replase test data from spec
 require 'spec_helper'
 
 describe TextProcessing do
@@ -54,7 +55,7 @@ describe TextProcessing do
       expect(textProc.remove_trailing_whitespace).to eq text2
     end
   end
-  
+
   describe '#capitalize_line' do
     it 'replace all laters to capitalize except first' do
       line1 = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
@@ -81,7 +82,7 @@ describe TextProcessing do
     end
     context 'with a only formula on line' do
       it 'return false, the formula contains dashes' do
-        line = 'Т— Г —Т' 
+        line = 'Т— Г —Т'
         textProc = TextProcessing.new(line)
         expect(textProc.uppercase_line?(line)).to be false
       end
@@ -112,35 +113,43 @@ describe TextProcessing do
         text2 = "капітал
 фігурує лише як товар; але коли мова йде про складові частини вартости,
 то"
-#now it add additional whitespace in the begining of line
+        #now it add additional whitespace in the begining of line
         textProc = TextProcessing.new(text1)
         expect(textProc.remove_line_breaks).to eq text2
       end
     end
   end
-#   describe '#capitalize_heading' do
-#     context 'a text with heading' do
-#       it 'return text with capitalize heading' do
-#         text1 = 'капіталу є та форма, що в ній класична
-# економія розглядає процес кругобігу промислового капіталу.
+  describe '#capitalize_heading' do
+    context 'a text with heading' do
+      it 'return text with capitalize heading' do
+        text1 = 'капіталу є та форма, що в ній класична
+економія розглядає процес кругобігу промислового капіталу.
 
-# РОЗДІЛ ТРЕТІЙ
+РОЗДІЛ ТРЕТІЙ
 
-# КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ
+КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ
 
-# Загальна формула для кругобігу товарового капіталу така:'
-#         text2 = 'капіталу є та форма, що в ній класична
-# економія розглядає процес кругобігу промислового капіталу.
+Загальна формула для кругобігу товарового капіталу така:'
+        text2 = 'капіталу є та форма, що в ній класична
+економія розглядає процес кругобігу промислового капіталу.
 
-# Розділ третій
+Розділ третій
 
-# Кругобіг товарового капіталу
+Кругобіг товарового капіталу
 
-# Загальна формула для кругобігу товарового капіталу така:'
-#         textProc = TextProcessing.new(text1)
-#         expect(textProc.lowercase_heading(text1)).to eq text2
-#       end
-#     end
-#   end
+Загальна формула для кругобігу товарового капіталу така:'
+        textProc = TextProcessing.new(text1)
+        expect(textProc.capitalize_heading(text1)).to eq text2
+      end
+    end
+  end
+
+  # describe '#add_empty_line' do
+  #   context 'the text doesn`t has empty line at the end' do
+  #     it 'add empty line at the end of file' do
+      
+  #     end
+  #   end
+  # end
 
 end

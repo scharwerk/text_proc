@@ -3,22 +3,6 @@ class TextProcessing
   def initialize(text)
     @text = text
   end
-  # it is not correct to pass a text every time
-  # def self.line_break_remove(text)
-  #   text.gsub(/-$/, "")
-  # end
-
-  # def self.ends_with_hyphen?(line)
-  #   line.end_with?('-')
-  # end
-
-  # def self.remove_last_word(line)
-  #   line[0...line.rindex(' ')]
-  # end
-
-  # def self.remove_first_word(line)
-  #   line[1...(line.rindex(' ')+1)]
-  # end
 
   def change_quotes
     @text.gsub(/[„“]/, '„' => '«', '“' => '»')
@@ -48,10 +32,14 @@ class TextProcessing
   end
 
 
-  # def capitalize_heading(text)
-  #   text.each line do |line|
-  #     if self.upercase_line?(line) line.capitalize : line
-  #   end
-  # end
-  # try to delete in couple with a line end symbol
+  def capitalize_heading(text)
+    #ToDo somehow remuve new_text variable
+    new_text = ""
+    text.each_line do |line|
+      self.uppercase_line?(line) ? new_text << line.capitalize : new_text << line
+    end
+    new_text
+  end
+
+  
 end
