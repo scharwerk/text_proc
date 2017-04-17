@@ -41,5 +41,9 @@ class TextProcessing
     new_text
   end
 
-  
+  def add_empty_line
+    @text.match?(/\S\z/) ? @text << "\n" : @text 
+    #\z match end of a string
+    #\S march any symbol except whitespace and Line seperator
+  end
 end

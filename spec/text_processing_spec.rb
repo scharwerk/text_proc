@@ -144,12 +144,17 @@ describe TextProcessing do
     end
   end
 
-  # describe '#add_empty_line' do
-  #   context 'the text doesn`t has empty line at the end' do
-  #     it 'add empty line at the end of file' do
-      
-  #     end
-  #   end
-  # end
+  describe '#add_empty_line' do
+    context 'for text with no empty line at the end' do
+      it 'add`s an empty line at the end of a file' do
+        text1 = "на найманих робітників"
+        
+        text2 = "на найманих робітників
+"
+        textProc = TextProcessing.new(text1)
+        expect(textProc.add_empty_line).to eq text2
+      end
+    end
+  end
 
 end
