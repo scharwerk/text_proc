@@ -154,6 +154,30 @@ describe TextProcessing do
         textProc = TextProcessing.new(text1)
         expect(textProc.add_empty_line).to eq text2
       end
+      context 'with a real text' do
+        it 'add`s an empty line at the end of a file' do
+          text1 = "на найманих робітників.
+
+Подруге. Товари, що входять у процес циркуляції промислового
+капіталу (сюди належать і доконечні засоби існування, що на них пере-"
+        
+          text2 = "на найманих робітників.
+
+Подруге. Товари, що входять у процес циркуляції промислового
+капіталу (сюди належать і доконечні засоби існування, що на них пере-
+"
+          textProc = TextProcessing.new(text1)
+          expect(textProc.add_empty_line).to eq text2
+        end
+      end
+    end
+    context 'for text with no empty line at the end' do
+      it 'do not add`s an empty line at the end of a file' do
+        text1 = "на найманих робітників
+"
+        textProc = TextProcessing.new(text1)
+        expect(textProc.add_empty_line).to eq text1
+      end  
     end
   end
 
