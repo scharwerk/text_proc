@@ -14,9 +14,7 @@ class TextProcessing
 
   def capitalize_line(line)
     line.capitalize
-    # good news it will work for ruby 2.4.0
-    # case methods works only with English
-    # case conversion is effective only in ASCII region.
+    # work only for ruby 2.4.0 and later
   end
 
   def uppercase_line?(line)
@@ -45,5 +43,9 @@ class TextProcessing
     @text.match?(/\S\z/) ? @text << "\n" : @text 
     #\z match end of a string
     #\S march any symbol except whitespace and Line seperator
+  end
+
+  def replace_double_chars
+    @text.gsub(/([+, -, =, —, X])(\n)[+, -, =, —, X]\s/) { "#{ $1 }\n" }
   end
 end
