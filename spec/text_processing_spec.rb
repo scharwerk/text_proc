@@ -66,6 +66,7 @@ describe TextProcessing do
   end
 
   describe '#uppercase_line?' do
+# ToDo It could be as well 'РОЗДІЛ ТРИДЦЯТЬ шостий'
     context 'a line with all uppercase laters' do
       it 'return true' do
         line = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
@@ -178,6 +179,18 @@ describe TextProcessing do
         textProc = TextProcessing.new(text1)
         expect(textProc.add_empty_line).to eq text1
       end  
+    end
+  end
+
+  describe '#replace_double_chars' do
+    #ToDo it could be as well X
+    it 'Replace double chars on line break (—, =, +, -)' do
+      text1 = '(таблиці XVI і XVII), і сума ренти є знову 6X20=10X12 =
+= 120 шил.'
+      text2 = '(таблиці XVI і XVII), і сума ренти є знову 6X20=10X12 =
+120 шил.'
+      textProc = TextProcessing.new(text1)
+      expect(textProc.replace_double_chars). to eq text2
     end
   end
 
