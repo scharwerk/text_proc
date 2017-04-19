@@ -12,13 +12,14 @@ describe TextProcessing do
 єдино правильний метод той, щоб на доходи кожного року покладати
 зневартнення, неминуче зв’язане з тим, щоб заслужити ці доходи, все
 одно, чи витрачено дану суму, чи ні» (Captain '
-      textProc = TextProcessing.new(text1)
-      expect(textProc.change_quotes).to eq text2
+      text_proc = TextProcessing.new(text1)
+      expect(text_proc.change_quotes).to eq text2
     end
   end
 
   describe '#remove_trailing_whitespace' do
     it 'remove space in an end of a line' do
+      # Don`t touch trailing whitespace in the spec
       text1 =  'Навпаки,
 єдино правильний метод той, щоб на доходи кожного року покладати 
 зневартнення, неминуче зв’язане з тим, щоб заслужити ці доходи, все
@@ -27,8 +28,8 @@ describe TextProcessing do
 єдино правильний метод той, щоб на доходи кожного року покладати
 зневартнення, неминуче зв’язане з тим, щоб заслужити ці доходи, все
 одно, чи витрачено дану суму, чи ні“ (Captain'
-      textProc = TextProcessing.new(text1)
-      expect(textProc.remove_trailing_whitespace).to eq text2
+      text_proc = TextProcessing.new(text1)
+      expect(text_proc.remove_trailing_whitespace).to eq text2
     end
     it 'remove space in a begining of a line' do
       text1 =  'Навпаки,
@@ -39,8 +40,8 @@ describe TextProcessing do
 єдино правильний метод той, щоб на доходи кожного року покладати
 зневартнення, неминуче зв’язане з тим, щоб заслужити ці доходи, все
 одно, чи витрачено дану суму, чи ні“ (Captain'
-      textProc = TextProcessing.new(text1)
-      expect(textProc.remove_trailing_whitespace).to eq text2
+      text_proc = TextProcessing.new(text1)
+      expect(text_proc.remove_trailing_whitespace).to eq text2
     end
     it 'remove multiple spaces' do
       text1 =  'Навпаки,
@@ -51,8 +52,8 @@ describe TextProcessing do
 єдино правильний метод той, щоб на доходи кожного року покладати
 зневартнення, неминуче зв’язане з тим, щоб заслужити ці доходи, все
 одно, чи витрачено дану суму, чи ні“ (Captain'
-      textProc = TextProcessing.new(text1)
-      expect(textProc.remove_trailing_whitespace).to eq text2
+      text_proc = TextProcessing.new(text1)
+      expect(text_proc.remove_trailing_whitespace).to eq text2
     end
   end
 
@@ -60,47 +61,47 @@ describe TextProcessing do
     it 'replace all laters to capitalize except first' do
       line1 = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
       line2 = 'Кругобіг товарового капіталу'
-      textProc = TextProcessing.new(line1)
-      expect(textProc.capitalize_line(line1)).to eq line2
+      text_proc = TextProcessing.new(line1)
+      expect(text_proc.capitalize_line(line1)).to eq line2
     end
   end
 
   describe '#uppercase_line?' do
-# ToDo It could be as well 'РОЗДІЛ ТРИДЦЯТЬ шостий'
+    # TODO: It could be as well 'РОЗДІЛ ТРИДЦЯТЬ шостий'
     context 'a line with all uppercase laters' do
       it 'return true' do
         line = 'КРУГОБІГ ТОВАРОВОГО КАПІТАЛУ'
-        textProc = TextProcessing.new(line)
-        expect(textProc.uppercase_line?(line)).to be true
+        text_proc = TextProcessing.new(line)
+        expect(text_proc.uppercase_line?(line)).to be true
       end
     end
     context 'a ordinary line' do
       it 'return false' do
         line = "циркуляції є Г — Т... Т'—Г' — Г — Т — Г. При"
-        textProc = TextProcessing.new(line)
-        expect(textProc.uppercase_line?(line)).to be false
+        text_proc = TextProcessing.new(line)
+        expect(text_proc.uppercase_line?(line)).to be false
       end
     end
     context 'with a only formula on line' do
       it 'return false, the formula contains dashes' do
         line = 'Т— Г —Т'
-        textProc = TextProcessing.new(line)
-        expect(textProc.uppercase_line?(line)).to be false
+        text_proc = TextProcessing.new(line)
+        expect(text_proc.uppercase_line?(line)).to be false
       end
       it 'return false, the formula contains dots' do
         line = "Т...Т'"
-        textProc = TextProcessing.new(line)
-        expect(textProc.uppercase_line?(line)).to be false
+        text_proc = TextProcessing.new(line)
+        expect(text_proc.uppercase_line?(line)).to be false
       end
       it 'return false, the formula contains slash' do
         line = '/Р'
-        textProc = TextProcessing.new(line)
-        expect(textProc.uppercase_line?(line)).to be false
+        text_proc = TextProcessing.new(line)
+        expect(text_proc.uppercase_line?(line)).to be false
       end
       it 'return false, the formula contains backslash' do
         line = '\Р'
-        textProc = TextProcessing.new(line)
-        expect(textProc.uppercase_line?(line)).to be false
+        text_proc = TextProcessing.new(line)
+        expect(text_proc.uppercase_line?(line)).to be false
       end
     end
   end
@@ -114,9 +115,9 @@ describe TextProcessing do
         text2 = "капітал
 фігурує лише як товар; але коли мова йде про складові частини вартости,
 то"
-        #now it add additional whitespace in the begining of line
-        textProc = TextProcessing.new(text1)
-        expect(textProc.remove_line_breaks).to eq text2
+        # now it add additional whitespace in the begining of line
+        text_proc = TextProcessing.new(text1)
+        expect(text_proc.remove_line_breaks).to eq text2
       end
     end
   end
@@ -139,8 +140,8 @@ describe TextProcessing do
 Кругобіг товарового капіталу
 
 Загальна формула для кругобігу товарового капіталу така:'
-        textProc = TextProcessing.new(text1)
-        expect(textProc.capitalize_heading(text1)).to eq text2
+        text_proc = TextProcessing.new(text1)
+        expect(text_proc.capitalize_heading(text1)).to eq text2
       end
     end
   end
@@ -148,12 +149,12 @@ describe TextProcessing do
   describe '#add_empty_line' do
     context 'for text with no empty line at the end' do
       it 'add`s an empty line at the end of a file' do
-        text1 = "на найманих робітників"
-        
-        text2 = "на найманих робітників
-"
-        textProc = TextProcessing.new(text1)
-        expect(textProc.add_empty_line).to eq text2
+        text1 = 'на найманих робітників'
+
+        text2 = 'на найманих робітників
+'
+        text_proc = TextProcessing.new(text1)
+        expect(text_proc.add_empty_line).to eq text2
       end
       context 'with a real text' do
         it 'add`s an empty line at the end of a file' do
@@ -161,37 +162,36 @@ describe TextProcessing do
 
 Подруге. Товари, що входять у процес циркуляції промислового
 капіталу (сюди належать і доконечні засоби існування, що на них пере-"
-        
+
           text2 = "на найманих робітників.
 
 Подруге. Товари, що входять у процес циркуляції промислового
 капіталу (сюди належать і доконечні засоби існування, що на них пере-
 "
-          textProc = TextProcessing.new(text1)
-          expect(textProc.add_empty_line).to eq text2
+          text_proc = TextProcessing.new(text1)
+          expect(text_proc.add_empty_line).to eq text2
         end
       end
     end
     context 'for text with no empty line at the end' do
       it 'do not add`s an empty line at the end of a file' do
-        text1 = "на найманих робітників
-"
-        textProc = TextProcessing.new(text1)
-        expect(textProc.add_empty_line).to eq text1
-      end  
+        text1 = 'на найманих робітників
+'
+        text_proc = TextProcessing.new(text1)
+        expect(text_proc.add_empty_line).to eq text1
+      end
     end
   end
 
   describe '#replace_double_chars' do
-    #ToDo it could be as well X
+    # TODO: it could be as well X
     it 'Replace double chars on line break (—, =, +, -)' do
       text1 = '(таблиці XVI і XVII), і сума ренти є знову 6X20=10X12 =
 = 120 шил.'
       text2 = '(таблиці XVI і XVII), і сума ренти є знову 6X20=10X12 =
 120 шил.'
-      textProc = TextProcessing.new(text1)
-      expect(textProc.replace_double_chars). to eq text2
+      text_proc = TextProcessing.new(text1)
+      expect(text_proc.replace_double_chars). to eq text2
     end
   end
-
 end

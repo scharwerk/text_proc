@@ -20,32 +20,36 @@ class TextProcessing
   def uppercase_line?(line)
     line.match?(/\p{Upper}/) && !line.match?(/[\p{Lower}—.\/\\]/)
   end
-  
+
   def remove_line_breaks
-    @text.gsub(/(-\n)(\S+)\s/) { "#{$2}\n"}
+    @text.gsub(/(-\n)(\S+)\s/) { "#{$2}\n" }
     # In plain English, we looking for a pattern (/(-\n)(\S+)\s/),
     # that represent, hyphen then end of a line, then any charcter except
     # whitespace, then whitespace and replace with second group of pattern
     # $2 means (\S+), then end of a line \n
+
+    # /(\d\d):(\d\d)(..)/ =~ "12:50am"
+    # "Hour is #$1, minute #$2"
+    # md = /(\d\d):(\d\d)(..)/.match("12:50am")
+    # "Hour is #{md[1]}, minute #{md[2]}"
   end
 
-
   def capitalize_heading(text)
-    #ToDo somehow remuve new_text variable
-    new_text = ""
+    # TODO: somehow remuve new_text variable
+    new_text = ''
     text.each_line do |line|
-      self.uppercase_line?(line) ? new_text << line.capitalize : new_text << line
+      uppercase_line?(line) ? new_text << line.capitalize : new_text << line
     end
     new_text
   end
 
   def add_empty_line
-    @text.match?(/\S\z/) ? @text << "\n" : @text 
-    #\z match end of a string
-    #\S march any symbol except whitespace and Line seperator
+    @text.match?(/\S\z/) ? @text << "\n" : @text
+    # \z match end of a string
+    # \S march any symbol except whitespace and Line seperator
   end
 
   def replace_double_chars
-    @text.gsub(/([+, -, =, —, X])(\n)[+, -, =, —, X]\s/) { "#{ $1 }\n" }
+    @text.gsub(/([+, -, =, —, X])(\n)[+, -, =, —, X]\s/) { "#{$1}\n" }
   end
 end
